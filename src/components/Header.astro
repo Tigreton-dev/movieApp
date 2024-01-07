@@ -1,0 +1,262 @@
+<header class="h-[72px] px-[36px] flex items-center mb-8">
+    <img src="/DisneyLogo.svg" alt="Your SVG" class="w-[79px] mr-[32px]" />
+    <ul
+        id="defaultMenu"
+        class="text-white flex text-[12px] font-[600] h-[100%] tracking-[2px]"
+    >
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[18px] py-[15px] flex items-center cursor-pointer hover:underline decoration-solid decoration-2 underline-offset-[10px]"
+            >
+                <img
+                    src="/home.svg"
+                    alt="home icon"
+                    class="w-[20px] ml-[2px]"
+                />
+                <p class="ml-[10px] box-content">HOME</p>
+            </a>
+        </li>
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[18px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img
+                    src="/search.svg"
+                    alt="home icon"
+                    class="w-[20px] ml-[2px]"
+                />
+                <p class="ml-[10px]">SEARCH</p>
+            </a>
+        </li>
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[18px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img
+                    src="/home.svg"
+                    alt="home icon"
+                    class="w-[20px] ml-[2px]"
+                />
+                <p class="ml-[10px]">WATCHLIST</p>
+            </a>
+        </li>
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[18px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img
+                    src="/star.svg"
+                    alt="home icon"
+                    class="w-[20px] ml-[2px]"
+                />
+                <p class="ml-[10px]">ORIGINALS</p>
+            </a>
+        </li>
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[18px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img
+                    src="/movie.svg"
+                    alt="home icon"
+                    class="w-[20px] ml-[2px]"
+                />
+                <p class="ml-[10px]">MOVIES</p>
+            </a>
+        </li>
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[18px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img src="/tv.svg" alt="home icon" class="w-[20px] ml-[2px]" />
+                <p class="ml-[10px]">SERIES</p>
+            </a>
+        </li>
+    </ul>
+    <ul id="deviceMenu" class="flex hidden">
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[10px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img
+                    src="/home.svg"
+                    alt="home icon"
+                    class="w-[24px] ml-[2px]"
+                />
+            </a>
+        </li>
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[10px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img
+                    src="/search.svg"
+                    alt="home icon"
+                    class="w-[24px] ml-[2px]"
+                />
+            </a>
+        </li>
+        <li>
+            <a
+                class="w-[100%] h-[100%] px-[10px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img src="/add.svg" alt="home icon" class="w-[24px] ml-[2px]" />
+            </a>
+        </li>
+        <li>
+            <div
+                id="portraitMenuLogo"
+                class="w-[50px] h-[72px] px-[10px] py-[15px] flex items-center cursor-pointer"
+            >
+                <img
+                    src="/dropMenu.svg"
+                    alt="home icon"
+                    class="w-[24px] ml-[2px]"
+                />
+                <div
+                    id="portraitMenu"
+                    class="w-[183px] h-[148px] pt-2 border border-[rgb(151,151,151,34%)] rounded-md absolute top-[60px] left-[300px] z-10 bg-[rgb(19,19,19)]"
+                >
+                    <ul class="text-white text-[14px]">
+                        <li>
+                            <a
+                                class="w-[100%] h-[100%] px-[18px] py-[10px] flex items-center cursor-pointer"
+                            >
+                                <img
+                                    src="/star.svg"
+                                    alt="home icon"
+                                    class="w-[24px] ml-[2px]"
+                                />
+                                <p class="ml-[10px]">ORIGINALS</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="w-[100%] h-[100%] px-[18px] py-[10px] flex items-center cursor-pointer"
+                            >
+                                <img
+                                    src="/movie.svg"
+                                    alt="home icon"
+                                    class="w-[24px] ml-[2px]"
+                                />
+                                <p class="ml-[10px]">MOVIES</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="w-[100%] h-[100%] px-[18px] py-[10px] flex items-center cursor-pointer"
+                            >
+                                <img
+                                    src="/tv.svg"
+                                    alt="home icon"
+                                    class="w-[24px] ml-[2px]"
+                                />
+                                <p class="ml-[10px]">SERIES</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div
+        class="absolute right-[0px] w-[90px] h-[72px] flex justify-center items-center font-extralight text-[15px]"
+    >
+        <div class="w-[48px] h-[48px] relative right-[0px] z-20">
+            <img src="/micky.png" />
+        </div>
+        <div
+            id="menu"
+            class="right-0 top-0 overflow-hidden fixed w-[240px] h-[72px] hover:h-[380px] border border-transparent hover:border-[rgb(151,151,151,34%)] z-10 rounded-[4px] hover:bg-[rgb(19,19,19)] px-[20px] text-slate-300"
+        >
+            <ul>
+                <div
+                    class="flex items-center justify-end border-b border-[rgb(151,151,151,34%)] h-[72px]"
+                >
+                    <p class="mr-4">Name</p>
+                    <div class="w-[48px] h-[48px] relative right-[0px]">
+                        <img src="/micky.png" />
+                    </div>
+                </div>
+                <div class="flex items-center my-4">
+                    <div
+                        class="w-[48px] h-[48px] relative right-[0px] rounded-[100%] bg-[rgba(249,249,249,0.1)] flex justify-center"
+                    >
+                        <img src="/plas.svg" class="w-[24px]" />
+                    </div>
+                    <p class="ml-4">Add profile</p>
+                </div>
+                <li class="my-5">
+                    <a> Edit profile</a>
+                </li>
+                <li class="m5">
+                    <a> App settings</a>
+                </li>
+                <li class="my-5">
+                    <a> Account</a>
+                </li>
+                <li class="my-5">
+                    <a> Help</a>
+                </li>
+                <li class="my-5">
+                    <a> Log out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<style>
+    a {
+        position: relative;
+        text-decoration: none;
+    }
+    a::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: calc(100% - 70px);
+        height: 2px;
+        bottom: 22px;
+        left: 50px;
+        background-color: #ffffff;
+        transform: scaleX(0);
+        transition: transform 0.2s ease;
+        transform-origin: top left;
+    }
+    a:hover::before {
+        transform: scaleX(1);
+    }
+    #menu {
+        transition: height 0.2s ease-in-out;
+    }
+    #menu ul {
+        opacity: 0;
+        /* transition: opacity 0s; */
+        /* transition: opacity 0.5s ease-in-out; */
+        /* transition-delay: 0.2s; */
+    }
+    #menu:hover {
+        ul {
+            opacity: 1;
+            transition: opacity 0.4s ease-in-out;
+            transition-delay: 0.2s;
+        }
+    }
+    #portraitMenuLogo:hover {
+        #portraitMenu {
+            opacity: 1;
+        }
+    }
+    #portraitMenu {
+        opacity: 0;
+    }
+    @media (max-width: 1050px) {
+        #defaultMenu {
+            display: none;
+        }
+        #deviceMenu {
+            display: flex;
+        }
+    }
+</style>

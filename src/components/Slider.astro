@@ -1,0 +1,80 @@
+---
+
+---
+
+<script>
+    const slider = document.getElementById("slider");
+    const translateDeg = 90;
+    slider.style.transform = `translateX(-85%)`;
+    let extractedNumber = 0;
+    setInterval(() => {
+        const sliderTranslate = slider?.style.transform;
+        const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
+        if (numbers) {
+            // if (extractedNumber === 0) slider.style.transition = "transform 0.5s ease";
+            extractedNumber = parseFloat(numbers[0]);
+            if (extractedNumber > 500) {
+                extractedNumber = 0
+                slider.style.transition = "none";
+                slider.style.transform = `translateX(-85%)`;
+                setTimeout(() => {
+                    slider.style.transition = "transform 0.3s ease";
+                slider.style.transform = `translateX(-175%)`; 
+                }, 100);
+                
+            } else {
+                slider.style.transform = `translateX(-${translateDeg + extractedNumber}%)`;
+            }
+        
+        } else {
+            console.log("No numbers found in the string");
+        }
+        
+        
+    }, 4000);
+</script>
+
+<div id="slider" class="flex">
+    <div class="slide">
+        <img src="/simpsons.jpg" />
+    </div>
+    <div class="slide">
+        <img src="/indiana.jpg" />
+    </div>
+    <div class="slide">
+        <img src="/percyJackson.jpg" />
+    </div>
+    <div class="slide">
+        <img src="/mif.jpg" />
+    </div>
+    <div class="slide">
+        <img src="/echo.jpg" />
+    </div>
+    <div class="slide">
+        <img src="/simpsons.jpg" />
+    </div>
+    <div class="slide">
+        <img src="/indiana.jpg" />
+    </div>
+    <div class="slide">
+        <img src="/percyJackson.jpg" />
+    </div>
+</div>
+
+<style>
+    #slider {
+        width: 100%;
+        aspect-ratio: 4;
+        box-sizing: border-box;
+        transition: transform 0.3s ease;
+    }
+    .slide {
+        min-width: 90vw;
+        aspect-ratio: 4;
+        padding: 0 10px;
+    }
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+</style>

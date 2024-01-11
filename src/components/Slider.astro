@@ -1,11 +1,29 @@
 ---
+import { Image } from "astro:assets";
+import simpsons from "../../public/simpsons.jpg"
+import theSimpsonsTitle from "../../public/theSimpsonsTitle.png"
+import indiana from "../../public/indiana.jpg"
+import indianaJonesTitle from "../../public/indianaJonesTitle.png"
+import percyJackson from "../../public/percyJackson.jpg"
+import parcyJacksonTitle from "../../public/parcyJacksonTitle.png"
+import mif from "../../public/mif.jpg"
+import millTitle from "../../public/millTitle.png"
+import echo from "../../public/echo.jpg"
+import echoTitle from "../../public/echoTitle.png"
+import classOf09 from "../../public/classOf09.jpg"
+import classOf09Title from "../../public/classOf09Title.png"
+import familyGuy from "../../public/familyGuy.jpg"
+import familyGuyTitle from "../../public/familyGuyTitle.png"
+import cristobalBalenciaga from "../../public/cristobalBalenciaga.jpg"
+import cristobalBalenciagaTitle from "../../public/cristobalBalenciagaTitle.png"
+import marvelWhatIf from "../../public/marvelWhatIf.jpg"
+import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
 
 ---
-
 <script>
     const slider = document.getElementById("slider");
-    const translateDeg = 90;
-    slider.style.transform = `translateX(-85%)`;
+    const translateDeg = 91.5;
+    slider.style.transform = `translateX(0%)`;
     let extractedNumber = 0;
     setInterval(() => {
         const sliderTranslate = slider?.style.transform;
@@ -13,7 +31,7 @@
         if (numbers) {
             // if (extractedNumber === 0) slider.style.transition = "transform 0.5s ease";
             extractedNumber = parseFloat(numbers[0]);
-            if (extractedNumber > 500) {
+            if (extractedNumber > (85 * 10)) {
                 extractedNumber = 0
                 slider.style.transition = "none";
                 slider.style.transform = `translateX(-85%)`;
@@ -31,50 +49,155 @@
         }
         
         
-    }, 4000);
-</script>
+    }, 400000);
 
-<div id="slider" class="flex">
-    <div class="slide">
-        <img src="/simpsons.jpg" />
+
+    const nextSlideButton = document.getElementById("nextSlideButton")
+    nextSlideButton?.addEventListener("click", () => nextSlide())
+    const prevSlideButton = document.getElementById("prevSlideButton")
+    prevSlideButton?.addEventListener("click", () => prevSlide())
+
+    function nextSlide() {
+        const sliderTranslate = slider?.style.transform;
+        const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
+        extractedNumber = parseFloat(numbers[0]);
+        slider.style.transform = `translateX(-${translateDeg + extractedNumber}%)`;
+    }
+
+    function prevSlide() {
+        const sliderTranslate = slider?.style.transform;
+        const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
+        extractedNumber = parseFloat(numbers[0]);
+        slider.style.transform = `translateX(-${extractedNumber - translateDeg}%)`;
+    }
+
+
+    const sliderGoToButtons = document.getElementById("sliderGoToButtons")
+    const buttons = Array.from(sliderGoToButtons.getElementsByTagName("button"))
+    buttons.forEach((button,i) => {
+        button.addEventListener("click", () => gotToSlider(i))
+    })
+
+    function gotToSlider(index) {
+        slider.style.transform = `translateX(-${85+(index*translateDeg)}%)`;
+    }
+</script>
+<div class="w-[100%] h-[100%] relative">
+    <div id="slider" class="flex relative">
+        <div class="slide">
+            <Image alt="image" src={simpsons} class="slideImage" />
+            <Image alt="image" src={theSimpsonsTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={indiana} class="slideImage rounded-[4px]" />
+            <Image alt="image" src={indianaJonesTitle} class="absolute top-[0%] left-[0%]" />
+            <a class="absolute aspect-[3.89] cursor-pointer h-[100%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={percyJackson} class="slideImage" />
+            <Image alt="image" src={parcyJacksonTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <h4 class="sliderText absolute bottom-[20%] left-[6.5%] text-white text-[20px] font-semibold">New episodes every week</h4>
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={mif} class="slideImage" />
+            <Image alt="image" src={millTitle} class="absolute w-[20vw] top-[0%] left-[0%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={echo} class="slideImage" />
+            <Image alt="image" src={echoTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={classOf09} class="slideImage" />
+            <Image alt="image" src={classOf09Title} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={familyGuy} class="slideImage" />
+            <Image alt="image" src={familyGuyTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={cristobalBalenciaga} class="slideImage" />
+            <Image alt="image" src={cristobalBalenciagaTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={marvelWhatIf} class="slideImage" />
+            <Image alt="image" src={marvelWhatIfTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={simpsons} class="slideImage" />
+            <Image alt="image" src={theSimpsonsTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={indiana} class="slideImage" />
+            <Image alt="image" src={indianaJonesTitle} class="absolute top-[0%] left-[0%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+        <div class="slide relative">
+            <Image alt="image" src={percyJackson} class="slideImage" />
+            <Image alt="image" src={parcyJacksonTitle} class="absolute max-w-[20vw] top-[10%] left-[8%]" />
+            <a class="absolute w-[88.6vw] cursor-pointer h-[98.5%] rounded-md hover:border-[4px] border-[rgb(255,255,255,60%)] top-0"></a>
+        </div>
+    
     </div>
-    <div class="slide">
-        <img src="/indiana.jpg" />
+    <div id="sliderGoToButtons" class="absolute w-[auto] h-[auto] bottom-[5.5%] right-[7.5%] flex justify-end">
+        <button class="w-[6px] h-[6px] bg-white rounded-xl ml-[5px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
     </div>
-    <div class="slide">
-        <img src="/percyJackson.jpg" />
-    </div>
-    <div class="slide">
-        <img src="/mif.jpg" />
-    </div>
-    <div class="slide">
-        <img src="/echo.jpg" />
-    </div>
-    <div class="slide">
-        <img src="/simpsons.jpg" />
-    </div>
-    <div class="slide">
-        <img src="/indiana.jpg" />
-    </div>
-    <div class="slide">
-        <img src="/percyJackson.jpg" />
-    </div>
+    <button id="nextSlideButton" class="absolute w-[5.5%] h-[100%] top-0 right-1 z-10"><Image alt="image" src="/arrowRight.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
+    <button id="prevSlideButton" class="absolute w-[6%] h-[100%] top-0 left-0"><Image alt="image" src="/leftArrow.svg"  width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
 </div>
+
 
 <style>
     #slider {
         width: 100%;
-        aspect-ratio: 4;
+        height: 24vw;
         box-sizing: border-box;
         transition: transform 0.3s ease;
     }
     .slide {
-        min-width: 90vw;
-        aspect-ratio: 4;
-        padding: 0 10px;
+        min-width: 89.9vw;
+        height: 22.9vw;
+        margin: 0 10px;
+        overflow: hidden;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px, rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
     }
-    img {
+    .slide .slideImage {
+        /* box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px, rgba(0, 0, 0, 0.73) 0px 16px 10px -10px; */
+    }
+    Image {
         width: 100%;
-        border-radius: 10px;
+        border-radius: 5px;
+    }
+    .sliderText {
+        letter-spacing: .11px;
+        transition: opacity 750ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 850ms;
+        line-height: 1.4;
+        color: #f9f9f9;
+        font-family: Avenir-World-for-Disney-Demi,sans-serif;
+    }
+    .arrowImage {
+            display: none;
+        }
+    button:hover {
+        .arrowImage {
+            display: inline;
+        }
     }
 </style>

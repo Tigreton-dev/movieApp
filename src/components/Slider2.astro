@@ -1,0 +1,241 @@
+---
+import { Image } from "astro:assets";
+import simpsons from "../../public/simpsons.jpg"
+import theSimpsonsTitle from "../../public/theSimpsonsTitle.png"
+import indiana from "../../public/indiana.jpg"
+import indianaJonesTitle from "../../public/indianaJonesTitle.png"
+import percyJackson from "../../public/percyJackson.jpg"
+import parcyJacksonTitle from "../../public/parcyJacksonTitle.png"
+import mif from "../../public/mif.jpg"
+import millTitle from "../../public/millTitle.png"
+import echo from "../../public/echo.jpg"
+import echoTitle from "../../public/echoTitle.png"
+import classOf09 from "../../public/classOf09.jpg"
+import classOf09Title from "../../public/classOf09Title.png"
+import familyGuy from "../../public/familyGuy.jpg"
+import familyGuyTitle from "../../public/familyGuyTitle.png"
+import cristobalBalenciaga from "../../public/cristobalBalenciaga.jpg"
+import cristobalBalenciagaTitle from "../../public/cristobalBalenciagaTitle.png"
+import marvelWhatIf from "../../public/marvelWhatIf.jpg"
+import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
+
+---
+
+<script>
+    const slider = document.getElementById("slider");
+    slider?.addEventListener("mouseenter", () => stopInterval())
+    slider?.addEventListener("mouseleave", () => startInterval())
+    slider?.addEventListener("transitionend", () => onanimationend())
+    const translationValue =(window.innerWidth * 0.895) + 20;
+    const translationValueInPerceent = (translationValue * 100) / slider?.offsetWidth
+    slider.style.transform = `translateX(-${translationValueInPerceent *2}%)`;
+    const nextSlideButton = document.getElementById("nextSlideButton")
+    nextSlideButton?.addEventListener("click", () => nextSlide())
+    const prevSlideButton = document.getElementById("prevSlideButton")
+    prevSlideButton?.addEventListener("click", () => prevSlide())
+    let sliderInterval = setInterval(() => nextSlide(), 4000);
+
+
+    function stopInterval() {
+        clearInterval(sliderInterval)
+    }
+
+    function startInterval() {
+        sliderInterval = setInterval(() => nextSlide(), 4000);
+    }
+
+    function nextSlide() {
+        const sliderTranslate = slider?.style.transform;
+        const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
+       slider.style.transform = `translateX(calc(-${Number(numbers[0]) + translationValueInPerceent}%))`;
+       const sliderNumber = Math.round(Number(numbers[0])/translationValueInPerceent)
+       if (sliderNumber ===10) {
+        setTimeout(() => {
+            slider.style.transition = `none`;
+            slider.style.transform = `translateX(calc(-${translationValueInPerceent*2}%))`;
+            setTimeout(() => {
+                slider.style.transition = `transform 0.3s ease`;
+            }, 100);
+        }, 250);
+
+       }
+
+    }
+
+    function prevSlide() {
+        const sliderTranslate = slider?.style.transform;
+        const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
+       slider.style.transform = `translateX(calc(-${Number(numbers[0]) - translationValueInPerceent}%))`;
+       const sliderNumber = Math.round(Number(numbers[0])/translationValueInPerceent)
+       if (sliderNumber ===2) {
+        setTimeout(() => {
+            slider.style.transition = `none`;
+            slider.style.transform = `translateX(calc(-${translationValueInPerceent*10}%))`;
+            setTimeout(() => {
+                slider.style.transition = `transform 0.3s ease`;
+            }, 50);
+        }, 250);
+
+       }
+    }
+
+    function onanimationend() {
+        const titles = Array.from(slider?.getElementsByClassName("titleImage"))
+        titles.map(title=>title.classList.remove("titleImageAnimation"))
+        const slidesText = Array.from(slider?.getElementsByClassName("slideText"))
+        slidesText.map(text=>text.classList.remove("slideTextAnimation"))
+        const sliderTranslate = slider?.style.transform;
+        const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
+        const sliderNumber = Math.round(Number(numbers[0])/translationValueInPerceent)
+        titles[sliderNumber-2].classList.add("titleImageAnimation")
+        slidesText[sliderNumber-2].classList.add("slideTextAnimation")
+    }
+</script>
+
+<div id="sliderContainer" class="relative h-[25vw]">
+    
+    <div id="slider" class="absolute top-0 left-0 h-[22.9vw] flex">
+        <div class="slide min-w-[89.5vw] rounded-[4px] ml-[5vw]  mx-[10px] relative">
+            <Image alt="image" src={marvelWhatIf} class="rounded-[4px]" />
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={simpsons} class="rounded-[4px]" />
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+<!-- START -->
+        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+            <Image alt="image" src={indiana} class="rounded-[4px]" />
+            <Image alt="image" src={indianaJonesTitle} class="titleImage absolute top-[0%] left-[0%] w-[100%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+            <Image alt="image" src={percyJackson} class="rounded-[4px]" />
+            <Image alt="image" src={parcyJacksonTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={mif} class="rounded-[4px]" />
+            <Image alt="image" src={millTitle} class="titleImage absolute top-[0%] left-[0%] w-[100%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={echo} class="rounded-[4px]" />
+            <Image alt="image" src={echoTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={classOf09} class="rounded-[4px]" />
+            <Image alt="image" src={classOf09Title} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={familyGuy} class="rounded-[4px]" />
+            <Image alt="image" src={familyGuyTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={cristobalBalenciaga} class="rounded-[4px]" />
+            <Image alt="image" src={cristobalBalenciagaTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={marvelWhatIf} class="rounded-[4px]" />
+            <Image alt="image" src={marvelWhatIfTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={simpsons} class="rounded-[4px]" />
+            <Image alt="image" src={theSimpsonsTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+<!-- END -->
+        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+            <Image alt="image" src={indiana} class="rounded-[4px]" />
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+            <Image alt="image" src={percyJackson} class="rounded-[4px]" />
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+    </div>
+
+    <div id="sliderGoToButtons" class="absolute w-[auto] h-[auto] bottom-[13%] right-[7.5%] flex justify-end">
+        <button class="w-[6px] h-[6px] bg-white rounded-xl ml-[5px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+    </div>
+    <button id="nextSlideButton" class="sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] h-[100%] top-0 right-2 z-10"><Image alt="image" src="/arrowRight.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
+    <button id="prevSlideButton" class="sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] top-0 left-0"><Image alt="image" src="/leftArrow.svg"  width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
+
+</div>
+
+    
+
+
+<style>
+    #sliderContainer {
+        /* overflow-x: hidden; */
+    }
+    #slider{
+        /* transform: translateX(calc(-89.5vw - 20px)); */
+        transition: transform 0.3s ease;
+    }
+   .slide {
+        box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px, rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
+    }
+    .arrowImage {
+            display: none;
+        }
+    .sliderButtons:hover {
+        .arrowImage {
+            display: inline;
+        }
+    }
+    .titleImage {
+        /* transition: transform 0.3s ease; */
+        opacity: 0;
+        transition: transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 150ms, opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 150ms;
+    }
+    .titleImageAnimation {
+        transform: translateX(-30px);
+        opacity: 1;
+    }
+    .slideText {
+        opacity: 0;
+        transition: opacity 750ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 850ms;
+    }
+    .slideTextAnimation {
+        opacity: 1;
+    }
+</style>

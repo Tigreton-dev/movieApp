@@ -18,13 +18,25 @@ import cristobalBalenciaga from "../../public/cristobalBalenciaga.jpg"
 import cristobalBalenciagaTitle from "../../public/cristobalBalenciagaTitle.png"
 import marvelWhatIf from "../../public/marvelWhatIf.jpg"
 import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
-
+import guradiansOfGalaxy3 from "../../public/guardiansOfGalaxy3.jpg"
+import guradiansOfGalaxy3Title from "../../public/guardiansOfGalaxy3Title.png"
+import theCreator from "../../public/theCreator.jpg"
+import theCreatorTitle from "../../public/theCreatorTitle.png"
+import theBear from "../../public/theBear.jpg"
+import theBearTitle from "../../public/theBearTitle.png"
+import americanHorrorStory from "../../public/americanHorrorStory.jpg"
+import americanHorrorStoryTitle from "../../public/americanHorrorStoryTitle.png"
+import dopeSick from "../../public/dopeSick.jpg"
+import dopeSickTitle from "../../public/dopeSickTitle.png"
+import bluey from "../../public/bluey.jpg"
+import blueyTitle from "../../public/blueyTitle.png"
 ---
 
 <script>
+    const sliderContainer = document.getElementById("sliderContainer")
     const slider = document.getElementById("slider");
-    slider?.addEventListener("mouseenter", () => stopInterval())
-    slider?.addEventListener("mouseleave", () => startInterval())
+    sliderContainer?.addEventListener("mouseenter", () => stopInterval())
+    sliderContainer?.addEventListener("mouseleave", () => startInterval())
     slider?.addEventListener("transitionend", () => onanimationend())
     const translationValue =(window.innerWidth * 0.895) + 20;
     const translationValueInPerceent = (translationValue * 100) / slider?.offsetWidth
@@ -34,6 +46,8 @@ import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
     const prevSlideButton = document.getElementById("prevSlideButton")
     prevSlideButton?.addEventListener("click", () => prevSlide())
     let sliderInterval = setInterval(() => nextSlide(), 4000);
+    const sliderGoToButtons = Array.from(document?.getElementsByClassName("slectSliderButton"));
+    sliderGoToButtons.map((button,i) => button.addEventListener("click", () => gotTosSlider(i)))
 
 
     function stopInterval() {
@@ -49,10 +63,13 @@ import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
         const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
        slider.style.transform = `translateX(calc(-${Number(numbers[0]) + translationValueInPerceent}%))`;
        const sliderNumber = Math.round(Number(numbers[0])/translationValueInPerceent)
-       if (sliderNumber ===10) {
+       sliderGoToButtons.map((button,i) =>button.style.background="rgba(255,255,255,50%)")
+       sliderNumber > 15 ? sliderGoToButtons[0].style.background="rgba(255,255,255,100%)" : sliderGoToButtons[sliderNumber-1].style.background="rgba(255,255,255,100%)"
+       if (sliderNumber ===16) {
         setTimeout(() => {
             slider.style.transition = `none`;
             slider.style.transform = `translateX(calc(-${translationValueInPerceent*2}%))`;
+            onanimationend()
             setTimeout(() => {
                 slider.style.transition = `transform 0.3s ease`;
             }, 100);
@@ -67,10 +84,13 @@ import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
         const numbers = sliderTranslate.match(/\d+(\.\d+)?/);
        slider.style.transform = `translateX(calc(-${Number(numbers[0]) - translationValueInPerceent}%))`;
        const sliderNumber = Math.round(Number(numbers[0])/translationValueInPerceent)
+       sliderGoToButtons.map((button,i) =>button.style.background="rgba(255,255,255,50%)")
+       sliderNumber-3 < 0 ?  sliderGoToButtons[14].style.background="rgba(255,255,255,100%)" : sliderGoToButtons[sliderNumber-3].style.background="rgba(255,255,255,100%)"
        if (sliderNumber ===2) {
         setTimeout(() => {
             slider.style.transition = `none`;
-            slider.style.transform = `translateX(calc(-${translationValueInPerceent*10}%))`;
+            slider.style.transform = `translateX(calc(-${translationValueInPerceent*16}%))`;
+            onanimationend()
             setTimeout(() => {
                 slider.style.transition = `transform 0.3s ease`;
             }, 50);
@@ -89,6 +109,13 @@ import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
         const sliderNumber = Math.round(Number(numbers[0])/translationValueInPerceent)
         titles[sliderNumber-2].classList.add("titleImageAnimation")
         slidesText[sliderNumber-2].classList.add("slideTextAnimation")
+    }
+
+    function gotTosSlider(index) {
+        sliderGoToButtons.map((button,i) =>button.style.background="rgba(255,255,255,50%)")
+        sliderGoToButtons[index].style.background="rgba(255,255,255,100%)"
+        const position = index+2;
+        slider.style.transform = `translateX(calc(-${translationValueInPerceent*position}%))`;
     }
 </script>
 
@@ -133,6 +160,13 @@ import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
         </div>
 
         <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={dopeSick} class="rounded-[4px]" />
+            <Image alt="image" src={dopeSickTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={classOf09} class="rounded-[4px]" />
             <Image alt="image" src={classOf09Title} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
@@ -149,6 +183,44 @@ import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
         <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={cristobalBalenciaga} class="rounded-[4px]" />
             <Image alt="image" src={cristobalBalenciagaTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={theCreator} class="rounded-[4px]" />
+            <Image alt="image" src={theCreatorTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={americanHorrorStory} class="rounded-[4px]" />
+            <Image alt="image" src={americanHorrorStoryTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={guradiansOfGalaxy3} class="rounded-[4px]" />
+            <Image alt="image" src={guradiansOfGalaxy3Title} class="titleImage absolute top-[0%] left-[o%] w-[100%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={theBear} class="rounded-[4px]" />
+            <Image alt="image" src={theBearTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
+        </div>
+
+
+        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+            <Image alt="image" src={bluey} class="rounded-[4px]" />
+            <Image alt="image" src={blueyTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
@@ -179,21 +251,21 @@ import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
     </div>
 
     <div id="sliderGoToButtons" class="absolute w-[auto] h-[auto] bottom-[13%] right-[7.5%] flex justify-end">
-        <button class="w-[6px] h-[6px] bg-white rounded-xl ml-[5px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
-        <button class="w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-white rounded-xl ml-[5px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
+        <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
     </div>
     <button id="nextSlideButton" class="sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] h-[100%] top-0 right-2 z-10"><Image alt="image" src="/arrowRight.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
     <button id="prevSlideButton" class="sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] top-0 left-0"><Image alt="image" src="/leftArrow.svg"  width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>

@@ -1,5 +1,10 @@
+---
+import { Image } from "astro:assets";
+import starLogo from "../../public/starLogo.png"
+---
+
 <div class="container">
-    <div class="item">
+    <div id="firstBox" class="item">
       <div class=item__border>
         <img class="item__image" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/FFA0BEBAC1406D88929497501C84019EBBA1B018D3F7C4C3C829F1810A24AD6E/scale?width=640&amp;aspectRatio=1.78&amp;format=png"/>
           <img alt="" class="item__image hover-image" src="https://prod-ripcut-delivery.disney-plus.net/v1/rawFiles/disney/RAW_C061B00E543326DA345FBF996B4D3D76422B58A49FDEE9AD9A2664618619A8F9" />
@@ -29,34 +34,45 @@
           <img alt="" class="item__image hover-image" src="https://prod-ripcut-delivery.disney-plus.net/v1/rawFiles/disney/RAW_16793CC7E2AF7B8687B0DD00673503CBC14CB2C801952D62B4551B6866073650" />
       </div>
     </div>
+    <div id="lastBox" class="item">
+      <div class=item__border>
+        <Image class="item__image" alt="star logo" src={starLogo}/>
+        <video class="absolute top-0 item__image hover-image" width="320" height="240" loop="" autoplay="" playsinline=""><source src="https://vod-bgc-eu-west-1.media.dssott.com/bgui/ps01/disney/bgui/2020/12/17/1608170098-brand-star.mp4" type="video/mp4"></video>
+      </div>
+    </div>
   </div>
 
   <style>
-    html {
-  background-color: rgb(26, 29, 41);
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh; */
-}
 .container {
+  margin-top: 5px;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-}
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row;
 
+}
+#firstBox {
+  margin-left: 0;
+}
+#lastBox {
+  margin-right: 0;
+}
 .item {
   width: 35%;
   position: relative;
-  padding: 15px;
+  margin: 0 10px;
   cursor: pointer;
 }
 
 .item__border {
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px, rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
+  background-image: linear-gradient(rgb(58, 60, 74), rgb(36, 38, 50));
   border-radius: 10px;
-  border: 4px solid rgba(249, 249, 249, 0.1);
+  /* border: 4px solid rgba(249, 249, 249, 0.1); */
   transition: transform 250ms ease-in-out, border 250ms ease-in-out, box-shadow 250ms ease-in-out;
 }
 
@@ -78,7 +94,7 @@
 
 .item:hover .item__border {
   box-shadow: rgba(0, 0, 0, 0.8) 0px 40px 58px -16px, rgba(0, 0, 0, 0.72) 0px 30px 22px -10px;
-  transform: scale(1.05);
+  transform: scale(1.1);
   border: 4px solid rgba(249, 249, 249, 0.8);
 }
 

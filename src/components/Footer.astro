@@ -1,0 +1,37 @@
+---
+import AstroIcon from "../../public/Astro.astro";
+---
+
+<div id="footerContainer">
+    <img src="/DisneyLogo.svg" alt="Your SVG" class="w-[79px]" />
+    <div class="flex justify-center"><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">Privacy Policy</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">Cookies Policy</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">UK &amp; EU Privacy Rights</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">Subscriber Agreement</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">Help</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">Supported Devices</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">About Us</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button">Interest-based Ads</button><button class="link sc-clNaTc cPYkkK link link--primary link--primary__h metadata" type="button" data-gv2elementkey="manage_privacy_preferences" data-gv2interactionkey="manage_privacy_preferences" data-gv2-interaction-bound="true">Manage Privacy Preferences</button></div>
+    <div class="text-center flex items-center justify-center mt-2">
+        <p class="mr-2 text-sm text-[#cacaca] font-thin text-[11.5px]">Made with ❤️ by Javi Sanchez - Powered by</p>
+        <a href="https://www.astro.build/" target="_blank"><AstroIcon /></a>
+    </div>
+</div>
+
+<style>
+#footerContainer {
+    background-color: #0e0b14;
+    width: 100vw;
+    height: 160px;
+    margin-top: 100px;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+}
+img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+button {
+    color: #f9f9f9;
+    font-size: 11.5px;
+  letter-spacing: -.1px;
+  line-height: 1.5;
+  margin: 12px;
+  font-weight: 100;
+}
+</style>

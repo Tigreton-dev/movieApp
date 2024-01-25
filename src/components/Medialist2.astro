@@ -1,0 +1,215 @@
+---
+import { Image } from "astro:assets";
+import theBigShortMedia from "../../public/media/theBigShortMedia.jpg"
+import theHappeningMedia from "../../public/media/theHappeningMedia.jpg"
+---
+
+<script>
+    let sliderPage = 0;
+    let numberOfElements = 5
+    const mediaSlider = document.getElementById("mediaSlider")
+    recalculateValues()
+    let sliderWidth = mediaSlider.offsetWidth
+    const nextMedia = document.getElementById("nextMedia");
+    const prevMedia = document.getElementById("prevMedia")
+    prevMedia.style.display = "none"
+    nextMedia.addEventListener("click", () => nextCLick())
+    prevMedia.addEventListener("click", () => prevCLick())
+    window.addEventListener("resize", () => recalculateValues())
+
+    function recalculateValues() {
+        if (window.innerWidth < 1015) numberOfElements = 3
+        if (window.innerWidth < 770) numberOfElements = 2
+        if (window.innerWidth > 1015) numberOfElements = 5
+        if (window.innerWidth > 1440) numberOfElements = 4
+        sliderWidth = mediaSlider.offsetWidth
+        mediaSlider.style.transition = "none"
+        mediaSlider.style.transform = `translateX(-${sliderWidth*sliderPage}px)`
+        setTimeout(() => {
+            mediaSlider.style.transition = "transform 0.3s ease-out"
+        }, 1000);
+    }
+    
+
+    function nextCLick() {
+        sliderPage++
+        mediaSlider.style.transform = `translateX(-${sliderWidth*sliderPage}px)`
+        if (sliderPage > 0 && prevMedia.style.display === "none") prevMedia.style.display = "inline"
+        if (sliderPage === 2) nextMedia.style.display = "none"
+    }
+
+    function prevCLick() {
+        sliderPage--
+        mediaSlider.style.transform = `translateX(-${sliderWidth*sliderPage}px)`
+        if (sliderPage === 0) prevMedia.style.display = "none"
+        if (sliderPage < 2 && nextMedia.style.display === "none") nextMedia.style.display = "inline"
+    }
+
+</script>
+
+
+<div id="mediaSliderContainer">
+    <div id="mediaSlider">
+
+     
+
+        <div class="mediaBox">
+            <Image src={theHappeningMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theHappeningMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theHappeningMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theHappeningMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+        <div class="mediaBox">
+            <Image src={theBigShortMedia} alt="media" class="image" />
+            <a class="link" />
+        </div>
+
+    </div>
+
+    <button id="prevMedia" class="sliderButtonsMedia"><Image alt="image" src="/leftArrow.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>   
+    <button id="nextMedia" class="sliderButtonsMedia"><Image alt="image" src="/arrowRight.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>   
+
+
+</div>
+
+<style>
+    #mediaSliderContainer {
+        margin-top: 50px;
+        width: 100vw;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    #mediaSlider {
+        transition: transform 0.3s ease-out;
+        display: flex;
+        width: 90%;
+        height: auto;
+        position: relative;
+        display: flex;
+    }
+    .mediaBox {
+        transition: transform 0.3s ease-out;
+        /* border: 3px solid transparent; */
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin: 10px;
+        width: calc((100% / 5) - 20px);
+        /* padding: 3px; */
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+    }
+    .mediaBox:hover {
+        /* border: 3px solid white; */
+        transform: scale(1.06); 
+    }
+    .image {
+        background-color: transparent;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.8) 0px 40px 58px -16px, rgba(0, 0, 0, 0.72) 0px 30px 22px -10px;
+    }
+    .link{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% + 12px);
+        height: calc(100% + 12px);
+        border-radius: 10px;
+        border: 3px solid transparent;
+    }
+    .link:hover{
+        border: 3px solid white;
+    }
+    .sliderButtonsMedia {
+        width: calc(((100%/5)*0.23));
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        height: calc(100%-6px);
+        top: 0;
+        z-index: 10;
+    }
+    #prevMedia {
+        left: 0;
+    }
+    #nextMedia {
+        right: 0;
+    }
+    @media (max-width: 1440px) {
+        .mediaSlider {
+            width: 90%;
+        }
+        .mediaBox {
+            width: calc((100% / 4) - 20px);
+        }
+    }
+    @media (max-width: 1015px) {
+        .mediaSlider {
+            width: 80%;
+        }
+        .mediaBox {
+            width: calc((100% / 3) - 20px);
+        }
+    }
+
+    @media (max-width: 770px) {
+        .mediaBox {
+            width: calc((100% / 2) - 20px);
+        }
+    }
+
+</style>

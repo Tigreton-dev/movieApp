@@ -38,7 +38,7 @@ import blueyTitle from "../../public/blueyTitle.png"
     sliderContainer?.addEventListener("mouseenter", () => stopInterval())
     sliderContainer?.addEventListener("mouseleave", () => startInterval())
     slider?.addEventListener("transitionend", () => onanimationend())
-    const translationValue =(window.innerWidth * 0.895) + 20;
+    const translationValue =(window.innerWidth * 0.9) + 20;
     const translationValueInPerceent = (translationValue * 100) / slider?.offsetWidth
     slider.style.transform = `translateX(-${translationValueInPerceent *2}%)`;
     const nextSlideButton = document.getElementById("nextSlideButton")
@@ -122,65 +122,65 @@ import blueyTitle from "../../public/blueyTitle.png"
 <div id="sliderContainer" class="relative h-[25vw]">
     
     <div id="slider" class="absolute top-0 left-0 h-[22.9vw] flex">
-        <div class="slide min-w-[89.5vw] rounded-[4px] ml-[5vw]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px] ml-[5vw]  mx-[10px] relative">
             <Image alt="image" src={marvelWhatIf} class="rounded-[4px]" />
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={simpsons} class="rounded-[4px]" />
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 <!-- START -->
-        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px] mx-[10px] relative">
             <Image alt="image" src={indiana} class="rounded-[4px]" />
             <Image alt="image" src={indianaJonesTitle} class="titleImage absolute top-[0%] left-[0%] w-[100%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px] mx-[10px] relative">
             <Image alt="image" src={percyJackson} class="rounded-[4px]" />
             <Image alt="image" src={parcyJacksonTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={mif} class="rounded-[4px]" />
             <Image alt="image" src={millTitle} class="titleImage absolute top-[0%] left-[0%] w-[100%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={echo} class="rounded-[4px]" />
             <Image alt="image" src={echoTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={dopeSick} class="rounded-[4px]" />
             <Image alt="image" src={dopeSickTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={classOf09} class="rounded-[4px]" />
             <Image alt="image" src={classOf09Title} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={familyGuy} class="rounded-[4px]" />
             <Image alt="image" src={familyGuyTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={cristobalBalenciaga} class="rounded-[4px]" />
             <Image alt="image" src={cristobalBalenciagaTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
@@ -188,21 +188,21 @@ import blueyTitle from "../../public/blueyTitle.png"
         </div>
 
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={theCreator} class="rounded-[4px]" />
             <Image alt="image" src={theCreatorTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={americanHorrorStory} class="rounded-[4px]" />
             <Image alt="image" src={americanHorrorStoryTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={guradiansOfGalaxy3} class="rounded-[4px]" />
             <Image alt="image" src={guradiansOfGalaxy3Title} class="titleImage absolute top-[0%] left-[o%] w-[100%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
@@ -210,7 +210,7 @@ import blueyTitle from "../../public/blueyTitle.png"
         </div>
 
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={theBear} class="rounded-[4px]" />
             <Image alt="image" src={theBearTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
@@ -218,33 +218,33 @@ import blueyTitle from "../../public/blueyTitle.png"
         </div>
 
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={bluey} class="rounded-[4px]" />
             <Image alt="image" src={blueyTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={marvelWhatIf} class="rounded-[4px]" />
             <Image alt="image" src={marvelWhatIfTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px]  mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px]  mx-[10px] relative">
             <Image alt="image" src={simpsons} class="rounded-[4px]" />
             <Image alt="image" src={theSimpsonsTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
             <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 <!-- END -->
-        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px] mx-[10px] relative">
             <Image alt="image" src={indiana} class="rounded-[4px]" />
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
 
-        <div class="slide min-w-[89.5vw] rounded-[4px] mx-[10px] relative">
+        <div class="slide min-w-[90vw] rounded-[4px] mx-[10px] relative">
             <Image alt="image" src={percyJackson} class="rounded-[4px]" />
             <a class="absolute top-0 w-[100%] h-[100%] rounded-[4px] hover:border-[4px] border-[rgb(255,255,255,60%)] cursor-pointer" />
         </div>
@@ -267,8 +267,8 @@ import blueyTitle from "../../public/blueyTitle.png"
         <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
         <button class="slectSliderButton w-[6px] h-[6px] bg-slate-400 rounded-xl ml-[16px]"></button>
     </div>
-    <button id="nextSlideButton" class="sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] h-[100%] top-0 right-2 z-10"><Image alt="image" src="/arrowRight.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
-    <button id="prevSlideButton" class="sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] top-0 left-0"><Image alt="image" src="/leftArrow.svg"  width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
+    <button id="nextSlideButton" class=" sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] h-[100%] top-0 right-0 z-10"><Image alt="image" src="/arrowRight.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
+    <button id="prevSlideButton" class=" sliderButtons flex justify-center items-center absolute w-[5%] h-[23vw] top-0 left-0"><Image alt="image" src="/leftArrow.svg"  width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>
 
 </div>
 

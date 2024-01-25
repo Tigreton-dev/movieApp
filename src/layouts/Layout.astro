@@ -35,13 +35,18 @@ const { title } = Astro.props;
 		);
 	}
 	html {
+		position: fixed;
 		background-image: url("https://static-assets.bamgrid.com/product/disneyplus/images/background.dc67869b698f6c927aae59c68d9dda46.png");
 		background-repeat: no-repeat;
   background-size: auto;
 		font-family: Avenir-World-for-Disney-Demi,sans-serif;
 		width: 100vw;
 		height: 100vh;
-		overflow: hidden;
+		overflow-x: hidden;
+	}
+	body{
+		height: 100vh;
+		overflow: scroll;
 	}
 	code {
 		font-family:

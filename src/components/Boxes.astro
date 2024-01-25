@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import starLogo from "../../public/starLogo.png"
 ---
 
-<div class="container">
+<div class="BoxContainer">
     <div id="firstBox" class="item">
       <div class=item__border>
         <img class="item__image" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/FFA0BEBAC1406D88929497501C84019EBBA1B018D3F7C4C3C829F1810A24AD6E/scale?width=640&amp;aspectRatio=1.78&amp;format=png"/>
@@ -43,8 +43,7 @@ import starLogo from "../../public/starLogo.png"
   </div>
 
   <style>
-.container {
-  margin-top: 5px;
+.BoxContainer {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -52,16 +51,17 @@ import starLogo from "../../public/starLogo.png"
   left: 50%;
   transform: translateX(-50%);
   flex-direction: row;
-
+  margin-top: 32px;
+  width: 90vw;
 }
 #firstBox {
-  margin-left: 0;
+  margin-left: 10px;
 }
 #lastBox {
-  margin-right: 0;
+  margin-right: 10px;
 }
 .item {
-  width: 35%;
+  /* width: 35%; */
   position: relative;
   margin: 0 10px;
   cursor: pointer;
@@ -104,15 +104,6 @@ import starLogo from "../../public/starLogo.png"
   z-index: -1;
   opacity: 1;
   visibility: visible;
-}
-
-@media only screen and (min-width: 992px) {
-  .container {
-    flex-direction: row;
-  }
-  .item {
-  width: 18%;
-  }
 }
 
   </style>

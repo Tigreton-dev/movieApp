@@ -1,0 +1,344 @@
+---
+import { Image } from "astro:assets";
+import theBigShortMedia from "../../public/media/theBigShortMedia.jpg"
+
+import simpsons from "../../public/simpsons.jpg"
+import theSimpsonsTitle from "../../public/theSimpsonsTitle.png"
+import indiana from "../../public/indiana.jpg"
+import indianaJonesTitle from "../../public/indianaJonesTitle.png"
+import percyJackson from "../../public/percyJackson.jpg"
+import parcyJacksonTitle from "../../public/parcyJacksonTitle.png"
+import mif from "../../public/mif.jpg"
+import millTitle from "../../public/millTitle.png"
+import echo from "../../public/echo.jpg"
+import echoTitle from "../../public/echoTitle.png"
+import classOf09 from "../../public/classOf09.jpg"
+import classOf09Title from "../../public/classOf09Title.png"
+import familyGuy from "../../public/familyGuy.jpg"
+import familyGuyTitle from "../../public/familyGuyTitle.png"
+import cristobalBalenciaga from "../../public/cristobalBalenciaga.jpg"
+import cristobalBalenciagaTitle from "../../public/cristobalBalenciagaTitle.png"
+import marvelWhatIf from "../../public/marvelWhatIf.jpg"
+import marvelWhatIfTitle from "../../public/marvelWhatIfTitle.png"
+import guradiansOfGalaxy3 from "../../public/guardiansOfGalaxy3.jpg"
+import guradiansOfGalaxy3Title from "../../public/guardiansOfGalaxy3Title.png"
+import theCreator from "../../public/theCreator.jpg"
+import theCreatorTitle from "../../public/theCreatorTitle.png"
+import theBear from "../../public/theBear.jpg"
+import theBearTitle from "../../public/theBearTitle.png"
+import americanHorrorStory from "../../public/americanHorrorStory.jpg"
+import americanHorrorStoryTitle from "../../public/americanHorrorStoryTitle.png"
+import dopeSick from "../../public/dopeSick.jpg"
+import dopeSickTitle from "../../public/dopeSickTitle.png"
+import bluey from "../../public/bluey.jpg"
+import blueyTitle from "../../public/blueyTitle.png"
+---
+
+<script>
+    let sliderPage = 2;
+    let numberOfElements = 1
+    const mediaSliderA = document.getElementById("mediaSliderA")
+    let sliderWidth = mediaSliderA.offsetWidth
+    mediaSliderA.style.transform = `translateX(-${sliderWidth*sliderPage}px)`
+    const nextSliderA = document.getElementById("nextSliderA");
+    const prevSliderA = document.getElementById("prevSliderA")
+    mediaSliderA.addEventListener("transitionend", () => onanimationend())
+    nextSliderA.addEventListener("click", () => nextCLick())
+    prevSliderA.addEventListener("click", () => prevCLick())
+    mediaSliderA?.addEventListener("mouseenter", () => stopInterval())
+    mediaSliderA?.addEventListener("mouseleave", () => startInterval())
+    window.addEventListener("resize", () => recalculateValues())
+    // let sliderInterval = setInterval(() => nextCLick(), 4000);
+    const selectSliderButton = Array.from(document?.getElementsByClassName("selectSliderButton"));
+    selectSliderButton.map((button,i) => button.addEventListener("click", () => gotTosSlider(i)))
+
+    function stopInterval() {
+        clearInterval(sliderInterval)
+    }
+
+    function startInterval() {
+        // sliderInterval = setInterval(() => nextCLick(), 4000);
+    }
+
+    function recalculateValues() {
+        sliderWidth = mediaSliderA.offsetWidth
+        mediaSliderA.style.transition = "none"
+        mediaSliderA.style.transform = `translateX(-${sliderWidth*sliderPage}px)`
+        setTimeout(() => {
+            mediaSliderA.style.transition = "transform 0.3s ease-out"
+        }, 500);
+    }
+    
+
+    function nextCLick() {
+        sliderPage++
+        mediaSliderA.style.transform = `translateX(-${sliderWidth*sliderPage}px)`
+        selectSliderButton.map((button,i) =>button.style.background="rgba(255,255,255,50%)")
+        sliderPage-2 > 14 ? selectSliderButton[0].style.background="rgba(255,255,255,100%)" : selectSliderButton[sliderPage-2].style.background="rgba(255,255,255,100%)"
+        if (sliderPage ===17) {
+            setTimeout(() => {
+                mediaSliderA.style.transition = `none`;
+                mediaSliderA.style.transform = `translateX(-${sliderWidth*2}px)`
+                sliderPage = 2;
+                onanimationend()
+                setTimeout(() => {
+                    mediaSliderA.style.transition = `transform 0.3s ease`;
+                }, 100);
+            }, 250);
+       }
+    }
+
+
+    function prevCLick() {
+        sliderPage--
+        mediaSliderA.style.transform = `translateX(-${sliderWidth*sliderPage}px)`
+        selectSliderButton.map((button,i) =>button.style.background="rgba(255,255,255,50%)")
+       sliderPage-2 < 0 ? selectSliderButton[14].style.background="rgba(255,255,255,100%)" : selectSliderButton[sliderPage-2].style.background="rgba(255,255,255,100%)"
+        if (sliderPage ===1) {
+            setTimeout(() => {
+                mediaSliderA.style.transition = `none`;
+                mediaSliderA.style.transform = `translateX(-${sliderWidth*16}px)`
+                sliderPage = 16;
+                onanimationend()
+                setTimeout(() => {
+                    mediaSliderA.style.transition = `transform 0.3s ease`;
+                }, 50);
+            }, 250);
+       }
+    }
+
+    function onanimationend() {
+        const titles = Array.from(mediaSliderA.getElementsByClassName("titleImage"))
+        titles.map(title=>title.classList.remove("titleImageAnimation"))
+        const slidesText = Array.from(mediaSliderA.getElementsByClassName("slideText"))
+        slidesText.map(text=>text.classList.remove("slideTextAnimation"))
+        titles[sliderPage-2].classList.add("titleImageAnimation")
+        slidesText[sliderPage-2].classList.add("slideTextAnimation")
+    }
+
+    function gotTosSlider(index) {
+        selectSliderButton.map((button,i) =>button.style.background="rgba(255,255,255,50%)")
+        selectSliderButton[index].style.background="rgba(255,255,255,100%)"
+        const position = index+2;
+        sliderPage= position
+        mediaSliderA.style.transform = `translateX(-${sliderWidth*position}px)`
+    }
+
+</script>
+
+
+<div id="sliderContainerA">
+    <div id="mediaSliderA">
+        <div class="mediaBoxA">
+            <Image alt="image" src={marvelWhatIf} class="image" />
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={simpsons} class="image" />
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+<!-- START -->
+        <div class="mediaBoxA">
+            <Image alt="image" src={indiana} class="image" />
+            <Image alt="image" src={indianaJonesTitle} class="titleImage absolute top-[0%] left-[0%] w-[100%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={percyJackson} class="image" />
+            <Image alt="image" src={parcyJacksonTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+
+        <div class="mediaBoxA">
+            <Image alt="image" src={mif} class="image" />
+            <Image alt="image" src={millTitle} class="titleImage absolute top-[00%] left-[0%] w-[100%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={echo} class="image" />
+            <Image alt="image" src={echoTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={dopeSick} class="image" />
+            <Image alt="image" src={dopeSickTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={classOf09} class="image" />
+            <Image alt="image" src={classOf09Title} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={familyGuy} class="image" />
+            <Image alt="image" src={familyGuyTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={cristobalBalenciaga} class="image" />
+            <Image alt="image" src={cristobalBalenciagaTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+
+        <div class="mediaBoxA">
+            <Image alt="image" src={theCreator} class="image" />
+            <Image alt="image" src={theCreatorTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={americanHorrorStory} class="image" />
+            <Image alt="image" src={americanHorrorStoryTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={guradiansOfGalaxy3} class="image" />
+            <Image alt="image" src={guradiansOfGalaxy3Title} class="titleImage absolute top-[0%] left-[0%] w-[100%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;"></span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={theBear} class="image" />
+            <Image alt="image" src={theBearTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={bluey} class="image" />
+            <Image alt="image" src={blueyTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={marvelWhatIf} class="image" />
+            <Image alt="image" src={marvelWhatIfTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={simpsons} class="image" />
+            <Image alt="image" src={theSimpsonsTitle} class="titleImage absolute top-[10%] left-[9%] w-[28%]" />
+            <h4 class="slideText text-white absolute bottom-[10%] left-[7%] text-xl font-bold"><span style="display: block;">New Episode Every Wednesday</span></h4>
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+<!-- END -->
+        <div class="mediaBoxA">
+            <Image alt="image" src={indiana} class="image" />
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+        <div class="mediaBoxA">
+            <Image alt="image" src={percyJackson} class="image" />
+            <a class="link absolute top-0 w-[100%] h-[100%]" />
+        </div>
+
+    </div>
+
+    <div id="sliderGoToButtons" class="absolute w-[auto] h-[auto] bottom-[7%] right-[7.5%] flex justify-end">
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+        <button class="selectSliderButton"></button>
+    </div>
+
+    <button id="prevSliderA" class="sliderButtonsMediaA"><Image alt="image" src="/leftArrow.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>   
+    <button id="nextSliderA" class="sliderButtonsMediaA"><Image alt="image" src="/arrowRight.svg" width="100%" height="100%" class="arrowImage w-[40px] h-[40px]" /></button>   
+
+
+</div>
+
+<style>
+    #sliderContainerA {
+        margin-top: 0px;
+        width: 100vw;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    #mediaSliderA {
+        transition: transform 0.3s ease-out;
+        display: flex;
+        width: 90%;
+        height: auto;
+        position: relative;
+        display: flex;
+    }
+    .mediaBoxA {
+        transition: transform 0.3s ease-out;
+        /* border: 3px solid transparent; */
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin: 10px;
+        width: calc((100% / 1) - 20px);
+        box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px, rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .image {
+        border-radius: 4px;
+        width: 100%;
+    }
+    .sliderButtonsMediaA {
+        width: calc(((100%/5)*0.25));
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        height: calc(100%-6px);
+        top: 0;
+        z-index: 10;
+    }
+    #prevSliderA {
+        left: 0;
+    }
+    #nextSliderA {
+        right: 0;
+    }
+    .selectSliderButton {
+        width: 6px;
+        height: 6px;
+        border-radius: 100%;
+        margin-left: 16px;
+        background: rgb(255, 255, 255, 60%);
+    }
+    .titleImage {
+        opacity: 0;
+        transition: transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 150ms, opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 150ms;
+    }
+    .titleImageAnimation {
+        transform: translateX(-30px);
+        opacity: 1;
+    }
+    .slideText {
+        opacity: 0;
+        transition: opacity 750ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 850ms;
+    }
+    .slideTextAnimation {
+        opacity: 1;
+    }
+
+
+</style>
